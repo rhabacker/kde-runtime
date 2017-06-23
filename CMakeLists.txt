@@ -1,5 +1,17 @@
 project(KDEBASE_RUNTIME)
 
+if(POLICY CMP0045)
+    cmake_policy(SET CMP0045 OLD)
+endif()
+
+if(POLICY CMP0054)
+    cmake_policy(SET CMP0054 OLD)
+endif()
+
+if(POLICY CMP0064)
+    cmake_policy(SET CMP0064 OLD)
+endif()
+
 cmake_minimum_required(VERSION 2.8.9)
 
 # where to look first for cmake modules, before ${CMAKE_ROOT}/Modules/ is checked
