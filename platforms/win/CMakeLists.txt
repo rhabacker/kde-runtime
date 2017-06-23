@@ -1,4 +1,6 @@
 add_subdirectory( kwinshutdown )
 add_subdirectory( kwinstartmenu ) 
 add_subdirectory( config )
+if(WINDRES_EXECUTABLE)
 add_subdirectory( contextmenu)
+endif()
