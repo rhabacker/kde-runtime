@@ -141,6 +141,11 @@ int CrashedApplication::thread() const
     return m_thread;
 }
 
+int CrashedApplication::event() const
+{
+    return m_event;
+}
+
 const QDateTime& CrashedApplication::datetime() const
 {
     return m_datetime;

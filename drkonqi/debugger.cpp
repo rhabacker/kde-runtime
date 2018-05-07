@@ -119,6 +119,7 @@ void Debugger::expandString(QString & str, ExpandStringUsage usage, const QStrin
     map[QLatin1String("pid")] = QString::number(appInfo->pid());
     map[QLatin1String("tempfile")] = tempFile;
     map[QLatin1String("thread")] = QString::number(appInfo->thread());
+    map[QLatin1String("event")] = QString::number(appInfo->thread());
 
     if (usage == ExpansionUsageShell) {
         str = KMacroExpander::expandMacrosShellQuote(str, map);
