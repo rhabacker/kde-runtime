@@ -64,6 +64,8 @@ public:
 
     int thread() const;
 
+    int event() const;
+
     const QDateTime& datetime() const;
 
 public slots:
@@ -85,6 +87,7 @@ protected:
     BugReportAddress m_reportAddress;
     bool m_restarted;
     int m_thread;
+    int m_event;
     QDateTime m_datetime;
 };
 

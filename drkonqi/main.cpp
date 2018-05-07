@@ -91,6 +91,7 @@ int main(int argc, char* argv[])
     options.add("keeprunning", ki18nc("@info:shell","Keep the program running and generate "
                                                     "the backtrace at startup"));
     options.add("thread <threadid>", ki18nc("@info:shell","The thread id of the failing thread"));
+    options.add("event <eventid>", ki18nc("@info:shell","The event ID that the crashed program expects to continue"));
     KCmdLineArgs::addCmdLineOptions(options);
 
     KComponentData inst(KCmdLineArgs::aboutData());

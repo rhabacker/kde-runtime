@@ -23,7 +23,7 @@ add_definitions(-DKDE_DEFAULT_DEBUG_AREA=1410)
 add_subdirectory( data )
 add_subdirectory( parser )
 add_subdirectory( tests )
-if ( WIN32 )
+if ( WIN32 AND MSVC)
     add_subdirectory( kdbgwin )
 endif ( WIN32 )
 
