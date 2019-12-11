@@ -31,13 +31,13 @@
 #endif
 
 // first: windows & compiler includes
-#include <Tchar.h>
-#include <Windows.h>
-#include <DbgHelp.h>
-#include <Assert.h>
-#include <Shlwapi.h>
-#include <Psapi.h>
-#include <TlHelp32.h>
+#include <tchar.h>
+#include <windows.h>
+#include <dbghelp.h>
+#include <assert.h>
+#include <shlwapi.h>
+#include <psapi.h>
+#include <tlhelp32.h>
 
 
 // second: Qt includes
