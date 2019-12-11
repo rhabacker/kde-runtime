@@ -30,9 +30,9 @@
 #include <QDBusConnectionInterface>
 #include <QtDebug>
 
-ShutdownWatcher::ShutdownWatcher(const QString &appName, int timeout, QObject *parent)
+ShutdownWatcher::ShutdownWatcher(const QStringList &appNames, int timeout, QObject *parent)
   : QObject(parent),
-    m_appName(appName),
+    m_appNames(appNames),
     m_checkLevel(0),
     m_timeout(timeout)
 {
@@ -58,23 +58,15 @@ void ShutdownWatcher::slotCheckShutDown()
     kDebug() << "timeout: checking at level" << m_checkLevel;
     foreach(const QString &app, allServiceNamesFromDBus())
     {
-        kDebug() << "checking" << app;
-        if (m_checkLevel == 0)
+        foreach(const QString &searchApp, m_appNames)
         {
-            if (app.contains(m_appName))
+            kDebug() << "checking" << app << "for" << searchApp;
+            if (app.contains(searchApp))
             {
-                kDebug() << app << "found";
+                kDebug() << app << "found at level" << m_checkLevel;
                 startWatch();
-                return;
-            }
-        }
-        else if (m_checkLevel == 1)
-        {
-            if (app.contains(m_appName))
-            {
-                kDebug() << app << "found at level 1";
-                m_checkLevel = 0;
-                startWatch();
+                if (m_checkLevel == 1)
+                    m_checkLevel = 0;
                 return;
             }
         }
@@ -82,12 +74,12 @@ void ShutdownWatcher::slotCheckShutDown()
     if (m_checkLevel == 0)
     {
         m_checkLevel = 1;
-        kDebug() << m_appName << "not found, increasing check level to" << m_checkLevel;
+        kDebug() << m_appNames << "not found, increasing check level to" << m_checkLevel;
         startWatch();
     }
     else if (m_checkLevel == 1)
     {
-        kDebug() << m_appName << "not running after two iterations, shutting down KDE";
+        kDebug() << m_appNames << "not running after two iterations, shutting down KDE";
         shutDownApps();
         qApp->quit();
     }

@@ -89,7 +89,7 @@ int main(int argc, char **argv)
     if (args->isSet("watch"))
     {
         int timeout = args->getOption("timeout").toInt();
-        ShutdownWatcher watcher(args->getOption("watch"), timeout);
+        ShutdownWatcher watcher(args->getOptionList("watch"), timeout);
         return app.exec();
     }
     else

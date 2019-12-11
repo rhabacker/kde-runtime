@@ -22,13 +22,14 @@
 #define SHUTDOWNWATCHER_H
 
 #include <QObject>
+#include <QStringList>
 
 class ShutdownWatcher : public QObject
 {
     Q_OBJECT
 public:
-    explicit ShutdownWatcher(const QString &appName, int timeout=60 /* seconds */, QObject *parent = 0);
-    
+    explicit ShutdownWatcher(const QStringList &appNames, int timeout=60 /* seconds */, QObject *parent = 0);
+
     void startWatch();
     QStringList allServiceNamesFromDBus() const;
 signals:
@@ -37,7 +38,7 @@ public slots:
     void slotCheckShutDown();
 
 protected:
-    QString m_appName;
+    QStringList m_appNames;
     int m_checkLevel;
     int m_timeout;
 };
