@@ -29,6 +29,8 @@
 #include <bfd.h>
 #include <cxxabi.h>
 
+#include <QFileInfo>
+
 MingwGenerator::MingwGenerator(const Process& process)
     : AbstractBTGenerator(process), file(NULL), func(NULL), line(0) 
 {}
@@ -128,8 +130,11 @@ int MingwGenerator::GetLine()
 void MingwGenerator::LoadSymbol(const QString& module, DWORD64 dwBaseAddr)
 {
     QString symbolFile = module;
-    symbolFile.truncate(symbolFile.length() - 4);
-    symbolFile.append(".sym");
+    symbolFile.append(".debug");
+
+    QFileInfo fi(symbolFile);
+    if (!fi.exists())
+        symbolFile = module;
 
     m_symbolsMap[module] = false; // default
     QString symbolType;
