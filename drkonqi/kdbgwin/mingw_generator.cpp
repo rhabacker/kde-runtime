@@ -24,6 +24,8 @@
  *****************************************************************/
 
 #include "mingw_generator.h"
+#define PACKAGE
+#define PACKAGE_VERSION
 #include <bfd.h>
 #include <cxxabi.h>
 

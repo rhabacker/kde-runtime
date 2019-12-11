@@ -26,6 +26,7 @@
 #pragma once
 
 #include "common.h"
+#include <QMap>
 
 typedef QMap<DWORD, HANDLE>     TThreadsMap;
 typedef QMap<QString, HMODULE>   TModulesMap;
