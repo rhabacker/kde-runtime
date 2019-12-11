@@ -97,7 +97,7 @@ macro_optional_add_subdirectory(ktimezoned)
 if(NOT WINCE)
 macro_optional_add_subdirectory(kuiserver)
 endif(NOT WINCE)
-if ( FOUND_LIBGCRYPT )
+if (LibGcrypt_FOUND OR FOUND_LIBGRCYPT)
     macro_optional_add_subdirectory(kwalletd)
 endif()
 
