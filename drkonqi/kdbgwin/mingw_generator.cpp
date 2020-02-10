@@ -136,6 +136,8 @@ void MingwGenerator::LoadSymbol(const QString& module, DWORD64 dwBaseAddr)
     if (!fi.exists())
         symbolFile = module;
 
+    if (m_symbolsMap[module])
+        return;
     m_symbolsMap[module] = false; // default
     QString symbolType;
     do
